@@ -107,6 +107,9 @@ private:
 		usleep(animatedelay);
 		moveto(x,y);
 		printf("%c",c); fflush(stdout);
+		moveto(21, outputy + 10);
+		// print current memory cell
+		printf("Cell %d, Value %d", m->memp, memory[m->memp]);
 		moveto(outputx,outputy);
 		if(animateShowTape)drawTape(m);
 	}
@@ -331,6 +334,8 @@ public:
 			tapex=code[0].size()+1; //tape comes to the right of the code
 			moveto(0,outputy-1);
 			printf("\x1B[34;1mOutput:\x1B[0m"); fflush(stdout);
+			moveto(0, outputy + 10);
+			printf("\x1B[34;1mCurrent Memory Cell:\x1B[0m");
 			moveto(outputx,outputy);
 		}
 		while(execcommandStep(m));
